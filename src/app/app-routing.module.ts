@@ -11,6 +11,7 @@ import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
     path: 'home',
     component: HomeComponent,
@@ -19,6 +20,12 @@ const routes: Routes = [
     path: 'category',
     component: CategoryComponent,
   },
+  { path: 'my-cart', component: MyCartComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'recovery', component: RecoveryComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
