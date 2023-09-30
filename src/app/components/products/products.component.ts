@@ -42,7 +42,6 @@ export class ProductsComponent {
     this.toggleProductDetail();
     this.productsService.getOne(id).subscribe(
       (data) => {
-        //this.toggleProductDetail();
         this.productChosen = data;
         this.statusDetail = 'success';
       },
