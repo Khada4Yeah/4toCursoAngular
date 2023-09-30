@@ -4,7 +4,6 @@
   [src]="img"
   *ngIf="img; else elseImg"
 />
-<!-- <h3>{{ counter }}</h3> -->
 <ng-template #elseImg>
   <img [src]="imageDefault" alt="" />
 </ng-template>
