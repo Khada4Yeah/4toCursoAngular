@@ -40,7 +40,7 @@ export class ProductsComponent {
   onShowDetail(id: string): void {
     this.statusDetail = 'loading';
     this.toggleProductDetail();
-    this.productsService.getProduct(id).subscribe(
+    this.productsService.getOne(id).subscribe(
       (data) => {
         //this.toggleProductDetail();
         this.productChosen = data;
@@ -58,7 +58,7 @@ export class ProductsComponent {
     // zip para correr en paralelo
     // colocar directo en el servicio
     this.productsService
-      .getProduct(id)
+      .getOne(id)
       .pipe(
         switchMap((product) =>
           this.productsService.update(product.id, { title: 'change' })

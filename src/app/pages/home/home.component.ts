@@ -15,18 +15,16 @@ export class HomeComponent implements OnInit {
   constructor(private productsService: ProductsService) {}
 
   ngOnInit(): void {
-    this.productsService.getAllProducts(10, 0).subscribe((data) => {
+    this.productsService.getAll(10, 0).subscribe((data) => {
       this.products = data;
       this.offset += this.limit;
     });
   }
 
   onLoadMore(): void {
-    this.productsService
-      .getProductsByPage(this.limit, this.offset)
-      .subscribe((data) => {
-        this.products = this.products.concat(data);
-        this.offset += this.limit;
-      });
+    this.productsService.getAll(this.limit, this.offset).subscribe((data) => {
+      this.products = this.products.concat(data);
+      this.offset += this.limit;
+    });
   }
 }
