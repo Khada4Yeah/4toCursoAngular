@@ -13,6 +13,11 @@ import { switchMap, zip } from 'rxjs';
 })
 export class ProductsComponent {
   @Input() products: Product[] = [];
+  @Input() set productId(id: string | null) {
+    if (id) {
+      this.onShowDetail(id);
+    }
+  }
   @Output() loadMore = new EventEmitter();
 
   total = 0;
@@ -39,7 +44,9 @@ export class ProductsComponent {
 
   onShowDetail(id: string): void {
     this.statusDetail = 'loading';
-    this.toggleProductDetail();
+    if (!this.showProductDetail) {
+      this.showProductDetail = true;
+    }
     this.productsService.getOne(id).subscribe(
       (data) => {
         this.productChosen = data;
