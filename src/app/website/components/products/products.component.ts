@@ -1,10 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { CreateProductDTO, Product } from '../../models/product.model';
-
-import { StoreService } from '../../services/store.service';
 import { ProductsService } from 'src/app/services/products.service';
 import { switchMap, zip } from 'rxjs';
+import { StoreService } from 'src/app/services/store.service';
+import { CreateProductDTO, Product } from 'src/app/models/product.model';
 
 @Component({
   selector: 'app-products',
