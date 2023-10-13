@@ -27,9 +27,13 @@ const routes: Routes = [
       { path: 'register', component: RegisterComponent },
       { path: 'recovery', component: RecoveryComponent },
       { path: 'profile', component: ProfileComponent },
-      { path: '**', component: NotFoundComponent },
     ],
   },
+  {
+    path: 'cms',
+    loadChildren: () => import('./cms/cms.module').then((m) => m.CmsModule),
+  },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
