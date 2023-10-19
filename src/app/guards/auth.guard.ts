@@ -31,11 +31,20 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    const token = this.tokenService.getToken();
-    if (!token) {
-      this.router.navigate(['/home']);
-      return false;
-    }
-    return true;
+    // const token = this.tokenService.getToken();
+    // if (!token) {
+    //   this.router.navigate(['/home']);
+    //   return false;
+    // }
+    // return true;
+    return this.authService.user$.pipe(
+      map((user) => {
+        if (!user) {
+          this.router.navigate(['/home']);
+          return false;
+        }
+        return true;
+      })
+    );
   }
 }

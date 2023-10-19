@@ -22,15 +22,17 @@ export class NavComponent implements OnInit {
     private storeService: StoreService,
     private authService: AuthService,
     private categoriesService: CategoriesService,
-    private route: Router
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.storeService.myCart$.subscribe((products) => {
       this.counter = products.length;
     });
-
     this.getAllCategories();
+    this.authService.user$.subscribe((data) => {
+      this.profile = data;
+    });
   }
 
   toggleMenu() {
@@ -39,10 +41,8 @@ export class NavComponent implements OnInit {
 
   login() {
     this.authService
-      .loginAndGet('pedro1@mail.com', '123456')
-      .subscribe((user) => {
-        this.profile = user;
-      });
+      .loginAndGet('carlos5@mail.com', '123456')
+      .subscribe(() => this.router.navigate(['/profile']));
   }
 
   getAllCategories() {
@@ -54,6 +54,6 @@ export class NavComponent implements OnInit {
   logout() {
     this.authService.logout();
     this.profile = null;
-    this.route.navigate(['/home']);
+    this.router.navigate(['/home']);
   }
 }
