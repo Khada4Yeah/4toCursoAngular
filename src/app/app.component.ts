@@ -30,8 +30,8 @@ export class AppComponent {
   createUser() {
     this.userService
       .create({
-        name: 'Paul',
-        email: 'paul@mail.com',
+        name: 'Pedro',
+        email: 'pedro1@mail.com',
         password: '123456',
         role: 'customer',
       })

@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/models/user.model';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { Category } from 'src/app/models/product.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -16,12 +17,12 @@ export class NavComponent implements OnInit {
   counter = 0;
   profile: User | null = null;
   categories: Category[] = [];
-  router: any;
 
   constructor(
     private storeService: StoreService,
     private authService: AuthService,
-    private categoriesService: CategoriesService
+    private categoriesService: CategoriesService,
+    private route: Router
   ) {}
 
   ngOnInit(): void {
@@ -38,7 +39,7 @@ export class NavComponent implements OnInit {
 
   login() {
     this.authService
-      .loginAndGet('paul@mail.com', '123456')
+      .loginAndGet('pedro1@mail.com', '123456')
       .subscribe((user) => {
         this.profile = user;
       });
@@ -48,5 +49,11 @@ export class NavComponent implements OnInit {
     this.categoriesService.getAll().subscribe((data) => {
       this.categories = data;
     });
+  }
+
+  logout() {
+    this.authService.logout();
+    this.profile = null;
+    this.route.navigate(['/home']);
   }
 }
