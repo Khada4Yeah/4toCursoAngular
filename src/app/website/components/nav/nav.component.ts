@@ -16,6 +16,7 @@ export class NavComponent implements OnInit {
   counter = 0;
   profile: User | null = null;
   categories: Category[] = [];
+  router: any;
 
   constructor(
     private storeService: StoreService,

@@ -4,7 +4,8 @@ import { FilesService } from './services/files.service';
 
 @Component({
   selector: 'app-root',
-  template: `<router-outlet></router-outlet>`,
+  template: `<button (click)="createUser()">dd</button>
+    <router-outlet></router-outlet>`,
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
@@ -32,6 +33,7 @@ export class AppComponent {
         name: 'Paul',
         email: 'paul@mail.com',
         password: '123456',
+        role: 'customer',
       })
       .subscribe((rta) => {
         console.log(rta);
